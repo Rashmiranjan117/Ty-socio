@@ -1,0 +1,49 @@
+.signup,
+.login {
+  min-height: 100vh;
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 30%;
+  margin: auto;
+  /* margin-top: 5rem; */
+  padding: 1.8rem 0;
+}
+
+h2,
+p {
+  text-align: center;
+}
+
+.form {
+  /* border: 1px solid; */
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  border-radius: 15px;
+  max-height: 50vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media all and (max-width: 780px) and (min-width: 430px) {
+  .signup,
+  .login {
+    max-width: 60%;
+  }
+  .form {
+    max-height: 70vh;
+  }
+}
+
+@media all and (max-width: 429px) and (min-width: 200px){
+    .signup,
+  .login {
+    max-width: 70%;
+  }
+  .form {
+    max-height: 80vh;
+  }
+  }

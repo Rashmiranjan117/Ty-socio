@@ -1,14 +1,12 @@
 import mongoose, { model, Schema, Document } from "mongoose";
 
 export interface UserInterface extends Document {
-  email?: string;
-  phoneNumber?: number;
+  credentials: string | number;
   password: string;
 }
 
 const authSchema: Schema<UserInterface> = new Schema({
-  email: { type: String, unique: true, sparse: true },
-  phoneNumber: { type: Number, unique: true, sparse: true },
+  credentials: { type: String || Number, required: true },
   password: { type: String, required: true },
 });
 

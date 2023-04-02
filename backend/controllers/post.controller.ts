@@ -3,10 +3,10 @@ import { PostModel } from "../models/link.model";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-import cloudinary, { UploadApiResponse } from "cloudinary";
-import multer = require("multer");
+// import cloudinary, { UploadApiResponse } from "cloudinary";
+// import multer = require("multer");
 
-import type { Multer, FileFilterCallback } from "multer";
+// import type { Multer, FileFilterCallback } from "multer";
 
 exports.getAll = async (req: express.Request, res: express.Response) => {
   try {

@@ -3,7 +3,8 @@ import mongoose, { model, Schema, Document } from "mongoose";
 interface LinkInterface extends Document {
   image: string;
   userId: string;
-  comment: string[];
+  comment?: string[];
+  description: string;
   like: number;
 }
 
@@ -12,7 +13,6 @@ const postSchema: Schema<LinkInterface> = new Schema({
   userId: { required: true, type: String },
   comment: {
     type: [String],
-    required: true,
     default: [],
   },
   like: {
@@ -20,6 +20,7 @@ const postSchema: Schema<LinkInterface> = new Schema({
     type: Number,
     default: 0,
   },
+  description: String,
 });
 
 export const PostModel = model<LinkInterface>("link", postSchema);
