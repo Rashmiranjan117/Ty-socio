@@ -24,7 +24,7 @@ interface SignupInterface {
 
 const registerUser = (payload: SignupInterface): AxiosPromise => {
   return axios({
-    url: "http://localhost:8080/auth/register",
+    url: "https://spotless-galoshes-lion.cyclic.app/auth/register",
     data: payload,
     method: "POST",
   });

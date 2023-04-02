@@ -46,7 +46,7 @@ const postData = (
 ): Promise<AxiosResponse> => {
   return axios({
     method: "POST",
-    url: "http://localhost:8080/post/",
+    url: "https://spotless-galoshes-lion.cyclic.app/post/",
     data: payload,
     headers: {
       Authorization: token,

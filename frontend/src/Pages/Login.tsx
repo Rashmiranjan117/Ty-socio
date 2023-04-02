@@ -25,7 +25,7 @@ interface LoginInterface {
 
 const LoginUser = (payload: LoginInterface): AxiosPromise => {
   return axios({
-    url: "http://localhost:8080/auth/login",
+    url: "https://spotless-galoshes-lion.cyclic.app/auth/login",
     data: payload,
     method: "POST",
   });

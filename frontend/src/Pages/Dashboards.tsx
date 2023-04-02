@@ -19,7 +19,7 @@ interface DataType {
 const getData = (token: string): Promise<AxiosResponse<DataType[]>> => {
   return axios({
     method: "GET",
-    url: "http://localhost:8080/post/",
+    url: "https://spotless-galoshes-lion.cyclic.app/post/",
     headers: {
       Authorization: token,
     },
@@ -30,7 +30,7 @@ const updateLikes = (token: string, payload: DataType) => {
   console.log(payload);
   return axios({
     method: "PATCH",
-    url: `http://localhost:8080/post/${payload._id}`,
+    url: `https://spotless-galoshes-lion.cyclic.app/${payload._id}`,
     data: payload,
     headers: {
       Authorization: token,
@@ -41,7 +41,7 @@ const updateLikes = (token: string, payload: DataType) => {
 const deletePost = (id: string, token: string) => {
   return axios({
     method: "DELETE",
-    url: `http://localhost:8080/post/${id}`,
+    url: `https://spotless-galoshes-lion.cyclic.app/post/${id}`,
     headers: {
       Authorization: token,
     },
