@@ -6,8 +6,8 @@ import { useToast } from "@chakra-ui/react";
 const ProtectedRoute = ({ children }: { children: ReactNode }) => {
   const cookie = new Cookies();
   const toast = useToast();
-  const token = cookie.get("auth");
-  console.log(token);
+  const token = cookie.get("isauth");
+  // console.log("Protected Route", token);
   if (!token) {
     toast({
       status: "warning",

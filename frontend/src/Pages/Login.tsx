@@ -9,10 +9,13 @@ import {
   FormHelperText,
   Checkbox,
   useToast,
+  Text,
+  Heading,
 } from "@chakra-ui/react";
 import axios, { AxiosPromise } from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Cookies from "universal-cookie";
+import "./styles/common.css";
 
 interface LoginInterface {
   email?: string;
@@ -39,18 +42,22 @@ const Login = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    let payload = { email, phoneNumber, password };
+    let credentials = email || phoneNumber;
+    console.log(credentials);
+    let payload = { credentials, password };
     LoginUser(payload)
       .then((res) => {
         toast({
-          title: "Account created Successfully.",
+          title: "Login Successfull.",
           status: "success",
           isClosable: true,
           duration: 5000,
+          description: `${res.data.msg}`,
         });
         let token = res.data.token;
         cookies.set("isauth", token);
         navigate("/");
+        console.log(res.data);
       })
       .catch((err) => {
         toast({
@@ -58,12 +65,14 @@ const Login = () => {
           status: "error",
           isClosable: true,
           duration: 5000,
+          description: `${err}`,
         });
       });
   };
   return (
     <Box className="login">
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form onSubmit={(e) => handleSubmit(e)} className="form">
+        <Heading>Login</Heading>
         <FormControl isRequired>
           <FormLabel>Email / Phone Number</FormLabel>
           <Checkbox defaultChecked onChange={(e) => setFLag(!flag)}>
@@ -88,7 +97,12 @@ const Login = () => {
             type="password"
           />
         </FormControl>
-        <Button type="submit">Login</Button>
+        <Button type="submit" colorScheme="blue" mt={4}>
+          Login
+        </Button>
+        <Text>
+          Don't have an Account? <Link to="/register">Signup</Link>
+        </Text>
       </form>
     </Box>
   );

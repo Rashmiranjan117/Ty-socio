@@ -9,9 +9,12 @@ import {
   FormHelperText,
   Checkbox,
   useToast,
+  Text,
+  Heading,
 } from "@chakra-ui/react";
 import axios, { AxiosPromise } from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import "./styles/common.css";
 
 interface SignupInterface {
   email?: string;
@@ -23,7 +26,7 @@ const registerUser = (payload: SignupInterface): AxiosPromise => {
   return axios({
     url: "http://localhost:8080/auth/register",
     data: payload,
-    method:"POST"
+    method: "POST",
   });
 };
 
@@ -37,11 +40,14 @@ const SIgnup = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    let payload = { email, phoneNumber, password };
+    let credentials = email || phoneNumber;
+    console.log(credentials);
+    let payload = { credentials, password };
     registerUser(payload)
       .then((res) => {
         toast({
           title: "Account created Successfully.",
+          description: `${res.data.msg}`,
           status: "success",
           isClosable: true,
           duration: 5000,
@@ -54,13 +60,15 @@ const SIgnup = () => {
           status: "error",
           isClosable: true,
           duration: 5000,
+          description: `${err}`,
         });
       });
   };
   // console.log(flag);
   return (
     <Box className="signup">
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form onSubmit={(e) => handleSubmit(e)} className="form">
+      <Heading>Signup</Heading>
         <FormControl isRequired>
           <FormLabel>Email / Phone Number</FormLabel>
           <Checkbox defaultChecked onChange={(e) => setFLag(!flag)}>
@@ -82,10 +90,15 @@ const SIgnup = () => {
           <Input
             placeholder="Enter Password"
             onChange={(e) => setPassword(e.target.value)}
-            type='password'
+            type="password"
           />
         </FormControl>
-        <Button type="submit">Signup</Button>
+        <Button type="submit" colorScheme="blue" mt={4}>
+          Signup
+        </Button>
+        <Text>
+          Already Have an Account? <Link to="/login">Login</Link>
+        </Text>
       </form>
     </Box>
   );
