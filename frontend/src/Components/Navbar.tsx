@@ -108,83 +108,85 @@ const Navbar = () => {
         <span className="white">Ty'</span>
         <span className="black">socio</span>
       </Heading>
-      <Box className="right-end">
-        <Box>
-          <Button
-            onClick={onOpen}
-            colorScheme="blue"
-            bgColor="white"
-            color="white"
-            variant="outline"
-          >
-            <GrAdd />
-            <Hide below="md">
-              <Text color="blue.600" ml={5}>
-                Add
-              </Text>
-            </Hide>
-          </Button>
-
-          <Modal
-            blockScrollOnMount={true}
-            closeOnOverlayClick={true}
-            isOpen={isOpen}
-            onClose={onClose}
-            size="xl"
-          >
-            <ModalOverlay />
-            <ModalContent className="modal">
-              <ModalHeader>Add New Post</ModalHeader>
-              <ModalCloseButton />
-              <ModalBody display="flex" flexDirection="column" gap={3}>
-                <form onSubmit={(e) => handleSubmit(e)}>
-                  <FormControl isRequired>
-                    <FormLabel>Enter Image Url</FormLabel>
-                    <Input
-                      placeholder="Enter Image url"
-                      onChange={(e) => setImage(e.target.value)}
-                    />
-                  </FormControl>
-                  <FormControl>
-                    <FormLabel>Enter Description</FormLabel>
-                    <Input
-                      placeholder="Description/Caption"
-                      onChange={(e) => setDescription(e.target.value)}
-                    />
-                  </FormControl>
-                  <Button type="submit" colorScheme="blue" variant="outline">
-                    Post
-                  </Button>
-                </form>
-              </ModalBody>
-
-              <ModalFooter>
-                <Button colorScheme="blue" mr={3} onClick={onClose}>
-                  Close
-                </Button>
-              </ModalFooter>
-            </ModalContent>
-          </Modal>
-        </Box>
-        <Menu>
-          <MenuButton
-            as={IconButton}
-            aria-label="Options"
-            icon={<FaRegUserCircle className="icon" />}
-            variant="solid"
-          />
-          <MenuList>
-            <MenuItem
-              background="red"
+      {token && (
+        <Box className="right-end">
+          <Box>
+            <Button
+              onClick={onOpen}
+              colorScheme="blue"
+              bgColor="white"
               color="white"
-              icon={<IoExitOutline />}
-              onClick={handleLogout}
+              variant="outline"
             >
-              Logout
-            </MenuItem>
-          </MenuList>
-        </Menu>
-      </Box>
+              <GrAdd />
+              <Hide below="md">
+                <Text color="blue.600" ml={5}>
+                  Add
+                </Text>
+              </Hide>
+            </Button>
+
+            <Modal
+              blockScrollOnMount={true}
+              closeOnOverlayClick={true}
+              isOpen={isOpen}
+              onClose={onClose}
+              size="xl"
+            >
+              <ModalOverlay />
+              <ModalContent className="modal">
+                <ModalHeader>Add New Post</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody display="flex" flexDirection="column" gap={3}>
+                  <form onSubmit={(e) => handleSubmit(e)}>
+                    <FormControl isRequired>
+                      <FormLabel>Enter Image Url</FormLabel>
+                      <Input
+                        placeholder="Enter Image url"
+                        onChange={(e) => setImage(e.target.value)}
+                      />
+                    </FormControl>
+                    <FormControl>
+                      <FormLabel>Enter Description</FormLabel>
+                      <Input
+                        placeholder="Description/Caption"
+                        onChange={(e) => setDescription(e.target.value)}
+                      />
+                    </FormControl>
+                    <Button type="submit" colorScheme="blue" variant="outline">
+                      Post
+                    </Button>
+                  </form>
+                </ModalBody>
+
+                <ModalFooter>
+                  <Button colorScheme="blue" mr={3} onClick={onClose}>
+                    Close
+                  </Button>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
+          </Box>
+          <Menu>
+            <MenuButton
+              as={IconButton}
+              aria-label="Options"
+              icon={<FaRegUserCircle className="icon" />}
+              variant="solid"
+            />
+            <MenuList>
+              <MenuItem
+                background="red"
+                color="white"
+                icon={<IoExitOutline />}
+                onClick={handleLogout}
+              >
+                Logout
+              </MenuItem>
+            </MenuList>
+          </Menu>
+        </Box>
+      )}
     </Box>
   );
 };
