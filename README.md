@@ -18,6 +18,7 @@
 - Private Routing
 - CRUD Operations
 - Form Validation with JWT. (Login/Signup)
+- Context Provider
 
 ## 💻 Screenschots
 **Signup Page**
