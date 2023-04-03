@@ -44,3 +44,25 @@
 **Frontend Deployed Link** : https://melodic-treacle-bd118a.netlify.app/
 
 **Backend github link** : https://github.com/Rashmiranjan117/searchingyard-js-backend
+
+## Want to run this project Locally?
+
+- Clone this project
+ 
+ ```bash
+ git clone https://github.com/Rashmiranjan117/SearchingYard_Assesment.git
+ ```
+ 
+ - Install all Packages (Both Frontend and Backend)
+  ```
+  cd frontend
+  npm install
+  npm run dev
+  ```
+  
+  ```
+  cd backend
+  npm install
+  npm run server
+  ```
+  
